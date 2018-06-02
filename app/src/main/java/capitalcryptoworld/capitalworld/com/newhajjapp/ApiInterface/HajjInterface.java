@@ -2,6 +2,8 @@ package capitalcryptoworld.capitalworld.com.newhajjapp.ApiInterface;
 
 
 import capitalcryptoworld.capitalworld.com.newhajjapp.Model.AccomodationList;
+import capitalcryptoworld.capitalworld.com.newhajjapp.Model.Assign;
+import capitalcryptoworld.capitalworld.com.newhajjapp.Model.AssignOperator;
 import capitalcryptoworld.capitalworld.com.newhajjapp.Model.AssignedAccomodation;
 import capitalcryptoworld.capitalworld.com.newhajjapp.Model.AuthToken;
 import capitalcryptoworld.capitalworld.com.newhajjapp.Model.AvailableProvider;
@@ -65,6 +67,8 @@ Call<CheckAccmodation> checkAccomodation(@Header("Authorization") String authori
 
     @POST("services/app/ComplaintService/ListOfUnAssignedComplaints")
     Call<UnAssignedComplain> getCompalinList();
+    @POST("services/app/OperatorService/AssignComplaintToOperator")
+    Call<AssignOperator> isAssign(@Body Assign assign);
 
 
 

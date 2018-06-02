@@ -42,6 +42,8 @@ public class Login extends AppCompatActivity {
     public static final String Value = "could not load data";
     int id;
     String token;
+    String concateStringWithToken;
+    String  authHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,22 +168,23 @@ public class Login extends AppCompatActivity {
                         editor.putString("Token",token);
                         editor.putInt("Id",id);
                         editor.commit();
+                        concateStringWithToken = "Bearer";
+                        authHeader = concateStringWithToken+" "+token;
                         //Login succefull
                         // now check Accomodation is selected or not
-                        Call<CheckAccmodation> checkAccmodationCall = restManager.getServices().checkAccomodation(token);
+                        Call<CheckAccmodation> checkAccmodationCall = restManager.getServices().checkAccomodation(authHeader);
                         checkAccmodationCall.enqueue(new Callback<CheckAccmodation>() {
                             @Override
                             public void onResponse(Call<CheckAccmodation> call, Response<CheckAccmodation> response) {
                                 if(response.isSuccessful()){
 
 
-                                  String  accom_id =   response.body().getResult();
+                                    String  accom_id =   response.body().getResult();
                                    Log.d("AccomodationId",accom_id+"");
                                     editor.putString("Accomodation_Id",accom_id);
                                     editor.commit();
                                     // now we check user type
-                                    String concateStringWithToken = "Bearer";
-                                    String  authHeader = concateStringWithToken+" "+token;
+
 
 
                                     Call<GetUserType> call1 = restManager.getServices().getUserById(id,authHeader);

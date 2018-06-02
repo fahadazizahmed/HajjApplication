@@ -9,29 +9,32 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import capitalcryptoworld.capitalworld.com.newhajjapp.Model.ComplainUser;
+import capitalcryptoworld.capitalworld.com.newhajjapp.Model.MyProvider;
 import capitalcryptoworld.capitalworld.com.newhajjapp.R;
 
 /**
- * Created by Fahad Aziz on 29/05/2018.
+ * Created by Fahad Aziz on 03/06/2018.
  */
 
-public class AdapterAdminShowComplain  extends RecyclerView.Adapter<AdapterAdminShowComplain.Holder> {
-    private List<ComplainUser> ListAccomodation;
+public class OperatorAdapter  extends RecyclerView.Adapter<OperatorAdapter.Holder> {
+    private List<MyProvider> ListAccomodation;
     private int previousposition=0;
     private final FlowerClickListener mlistener;
+    //int [] a = {R.drawable.na,R.drawable.nb,R.drawable.nc,R.drawable.nd,R.drawable.p1,R.drawable.p2,R.drawable.pa,R.drawable.r};
     //public static final String TAG=FlowerAdapter.class.getSimpleName();
+    int[] a;
 
-    public AdapterAdminShowComplain(FlowerClickListener listener)
+    public OperatorAdapter(FlowerClickListener listener)
     {
         ListAccomodation = new ArrayList<>();
+        this.a = a;
         mlistener = listener;
 
     }
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.complain_row,null,false);
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_spin,null,false);
         return new Holder(row);
 
 
@@ -39,10 +42,11 @@ public class AdapterAdminShowComplain  extends RecyclerView.Adapter<AdapterAdmin
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        ComplainUser userAccomdationList = ListAccomodation.get(position);
-        holder.mName.setText(userAccomdationList.getTitle());
+        MyProvider userAccomdationList = ListAccomodation.get(position);
+        holder.textView.setText(userAccomdationList.getName());
+        holder.textView1.setText(userAccomdationList.getMobile());
+        holder.textView2.setText(userAccomdationList.getDesignation());
 
-        holder.mAvailable.setText(userAccomdationList.getPriority());
         /*holder.mPrice.setText("$"+Double.toString(currFlower.getPrice()));
         Picasso.with(holder.itemView.getContext()).load("http://services.hanselandpetal.com/photos/"+currFlower.getPhoto()).into(holder.mPhoto);
         if(position>previousposition){//We are scrolling down
@@ -61,26 +65,28 @@ public class AdapterAdminShowComplain  extends RecyclerView.Adapter<AdapterAdmin
         return ListAccomodation.size();
     }
 
-    public void addFlower(ComplainUser ComplainUser) {
+    public void addFlower(MyProvider allAccomodation) {
 
-        ListAccomodation.add(ComplainUser);
+        ListAccomodation.add(allAccomodation);
+
         notifyDataSetChanged();
     }
 
-    public ComplainUser getAccomodation(int position)
+    public MyProvider getAccomodation(int position)
     {
         return ListAccomodation.get(position);
     }
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        // private ImageView mPhoto;
-        private TextView mName,mAvailable,mLocation;
+
+        private TextView textView,textView1,textView2;
         public Holder(View itemView) {
             super(itemView);
             //  mPhoto=(ImageView)itemView.findViewById(R.id.flowerPhoto);
-            mName=(TextView)itemView.findViewById(R.id.tx_location);
+            textView=(TextView)itemView.findViewById(R.id.text);
+            textView1=(TextView)itemView.findViewById(R.id.text1);
+            textView2=(TextView)itemView.findViewById(R.id.text2);
 
-            mAvailable=(TextView)itemView.findViewById(R.id.tx_availabe);
             itemView.setOnClickListener(this);
 
         }
@@ -95,7 +101,6 @@ public class AdapterAdminShowComplain  extends RecyclerView.Adapter<AdapterAdmin
 
     }
 }
-
 
 
 

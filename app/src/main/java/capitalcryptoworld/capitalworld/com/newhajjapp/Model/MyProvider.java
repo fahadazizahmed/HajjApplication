@@ -6,7 +6,7 @@ package capitalcryptoworld.capitalworld.com.newhajjapp.Model;
 
 public class MyProvider {
 
-        private String id;
+        private int id;
 
         private String creatorUserId;
 
@@ -30,12 +30,12 @@ public class MyProvider {
 
         private String mobile;
 
-        public String getId ()
+        public int getId ()
         {
             return id;
         }
 
-        public void setId (String id)
+        public void setId (int id)
         {
             this.id = id;
         }

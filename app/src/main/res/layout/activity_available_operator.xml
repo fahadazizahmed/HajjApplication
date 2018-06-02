@@ -11,7 +11,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textColor="#ff8d08"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -21,31 +21,111 @@
         android:shadowDy="10"
         android:shadowRadius="20"
         android:gravity="center"
-        android:text="Available Operator "/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:text="Complain Detail "/>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColor="#ff8d08
+"
+       android:paddingLeft="16dp"
+        android:gravity="center|left"
+
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_weight="0.3"
+        android:text="Here Little Description of the complain "/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/des"
+        android:textColor="@android:color/white"
+        android:paddingLeft="16dp"
+
+
+
+        android:gravity="center|left|top"
+        android:layout_weight="1"
+        android:text="Here is little Description of the complain "/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center|left|top"
+        android:paddingLeft="16dp"
+        android:text="Available operator to assign choose one  "
+        android:textColor="#ff8d08"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_weight="0.3"/>
+
+
+
+
+            <android.support.v7.widget.RecyclerView
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.4"
+
+
+                android:id="@+id/recyclerView"
+                />
+
+
+
+    <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Assign Operator to complain user"
+        android:id="@+id/btn_signs"
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.4"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal">
+        android:layout_marginBottom="32dp"
+        android:visibility="gone"
+
+        android:background="@drawable/button_rounded_corners"
+
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/bg_spinner">
-            <Spinner
-                style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
 
 
-                android:id="@+id/spinner"
-                />
-        </RelativeLayout>
-    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
 
 </LinearLayout>
