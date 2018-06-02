@@ -1,0 +1,153 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/z"
+
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColor="#ff8d08"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:textStyle="bold"
+
+        android:shadowColor="@android:color/holo_green_dark"
+        android:shadowDx="-10"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:layout_weight="0.5"
+        android:text="Register Complaint "/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+
+
+        android:background="@drawable/shadow"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/et_title"
+            android:padding="8dp"
+            android:hint="Title of complian"
+            android:background="@android:color/transparent"
+
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_weight="0.4"
+
+       android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+
+        android:orientation="horizontal">
+
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/android_material_design_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Slelect complaint type "
+            app:met_primaryColor="@android:color/white"
+            app:met_underlineColor="#ddb15b"
+            app:met_textColor ="@android:color/white"
+            app:met_floatingLabelAnimating ="true"
+
+
+
+            app:met_textColorHint="@android:color/white"
+
+
+            app:met_floatingLabel="normal" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="left"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="0.2"
+        android:text="Short Description"
+
+
+
+        android:textColor="#ff8d08"
+        android:textSize="24sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="0.8"
+        android:background="@drawable/shadow">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:id="@+id/et_detail"
+            android:inputType="text"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/button_rounded_corners"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="0.25"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+
+
+
+
+        android:orientation="horizontal"
+
+        android:gravity="center"
+
+        android:id="@+id/send_report"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20sp"
+
+            android:textColor="#ffffff"
+            android:text="Submit"/>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

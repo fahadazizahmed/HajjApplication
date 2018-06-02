@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/z"
+    tools:context="capitalcryptoworld.capitalworld.com.newhajjapp.Activity.AdminSelectPeople">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+
+        android:background="@drawable/shadow"
+       >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/et_people"
+            android:hint="Select people from draw"
+            android:inputType="number"
+            android:gravity="center"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select people"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btn_people"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_rounded_corners"/>
+
+
+
+
+
+
+
+
+
+</LinearLayout>

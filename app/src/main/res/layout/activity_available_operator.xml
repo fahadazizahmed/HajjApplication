@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/z"
+    android:orientation="vertical"
+    tools:context="capitalcryptoworld.capitalworld.com.newhajjapp.Activity.AvailableOperator">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff8d08"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/holo_green_dark"
+        android:shadowDx="-10"
+        android:layout_marginTop="32dp"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:gravity="center"
+        android:text="Available Operator "/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_spinner">
+            <Spinner
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+
+                android:id="@+id/spinner"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
