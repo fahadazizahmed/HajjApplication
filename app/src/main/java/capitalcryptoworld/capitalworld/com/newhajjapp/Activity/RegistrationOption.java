@@ -26,6 +26,7 @@ LinearLayout accomodationPackage;
     TextView textView;
     LinearLayout complainCervice;
     AlertDialog dialogBuilder;
+    LinearLayout linearLayout5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,18 @@ LinearLayout accomodationPackage;
         textView = (TextView)findViewById(R.id.acc_text);
         complainCervice = (LinearLayout)findViewById(R.id.btn_complain);
         registerHajj = (LinearLayout)findViewById(R.id.reg_hajj);
+        linearLayout5 = (LinearLayout)findViewById(R.id.logout) ;
+        linearLayout5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedpreferences = getSharedPreferences(RegistrationOption.filename, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.clear();
+                editor.commit();
+                Intent intent = new Intent(RegistrationOption.this,Login.class);
+                startActivity(intent);
+            }
+        });
 
 
         spref=getSharedPreferences(filename, Context.MODE_PRIVATE);

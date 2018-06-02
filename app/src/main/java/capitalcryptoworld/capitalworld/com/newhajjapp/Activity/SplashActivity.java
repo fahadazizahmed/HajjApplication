@@ -39,18 +39,23 @@ public class SplashActivity extends Activity {
 
                 spref=getSharedPreferences(filename, Context.MODE_PRIVATE);//this file only aceess your app
 
-                int type=spref.getInt("Shared Data",23);
+                String  type=spref.getString("role","feh");
+
                 Log.d("value",type+"");
 
 
-                if (type == 23 ) {
-                    startActivity(new Intent(getApplicationContext(), Login.class));
+                if (type.equals("User")  ) {
+                    startActivity(new Intent(getApplicationContext(), RegistrationOption.class));
                     finish();
 
 
                 }
-                else if(type == 32){
+                else if(type.equals("Admin")){
                     startActivity(new Intent(getApplicationContext(), AdminDashboard.class));
+                    finish();
+                }
+                else{
+                    startActivity(new Intent(getApplicationContext(), Login.class));
 
                 }
 

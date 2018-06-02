@@ -1,5 +1,7 @@
 package capitalcryptoworld.capitalworld.com.newhajjapp.Model;
 
+import java.util.Date;
+
 /**
  * Created by Fahad Aziz on 19/05/2018.
  */
@@ -18,12 +20,13 @@ public class RegisteHajjUser {
         this.cnicPic = cnicPic;
         this.passportPic = passportPic;
         this.id = id;
+        this.dob = dob;
     }
 
             String  gender;
             String address;
             String phone;
-            String dob;
+            Date dob;
             String province;
             String cnicPic;
             String passportPic;

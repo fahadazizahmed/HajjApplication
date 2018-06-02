@@ -1,6 +1,8 @@
 package capitalcryptoworld.capitalworld.com.newhajjapp.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +19,10 @@ public class AdminDashboard extends AppCompatActivity {
     LinearLayout linearLayout2;
     LinearLayout linearLayout3;
     LinearLayout linearLayout4;
+    SharedPreferences spref;
+    static String filename="my personal file";
+    public static final String Value = "could not load data";
+    LinearLayout linearLayout5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,18 @@ public class AdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminDashboard.this,AdminSelectPeople.class);
+                startActivity(intent);
+            }
+        });
+        linearLayout5 = (LinearLayout)findViewById(R.id.logout);
+        linearLayout5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedpreferences = getSharedPreferences(AdminDashboard.filename, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.clear();
+                editor.commit();
+                Intent intent = new Intent(AdminDashboard.this,Login.class);
                 startActivity(intent);
             }
         });

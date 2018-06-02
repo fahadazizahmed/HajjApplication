@@ -133,9 +133,9 @@ public class DetailAccomodationActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
 
                             mDialog.dismiss();
-                        Toast.makeText(DetailAccomodationActivity.this,"Accomodation is assigned to you",Toast.LENGTH_SHORT).show();
-Intent intent = new Intent(DetailAccomodationActivity.this,RegistrationOption.class);
-startActivity(intent);
+                         Toast.makeText(DetailAccomodationActivity.this,"Accomodation is assigned to you",Toast.LENGTH_SHORT).show();
+                         Intent intent = new Intent(DetailAccomodationActivity.this,RegistrationOption.class);
+                         startActivity(intent);
                     }
                     else {
                             dialogBuilder = new AlertDialog.Builder(DetailAccomodationActivity.this).create();
