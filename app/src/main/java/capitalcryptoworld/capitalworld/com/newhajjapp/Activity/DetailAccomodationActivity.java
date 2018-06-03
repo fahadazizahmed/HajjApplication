@@ -44,7 +44,7 @@ public class DetailAccomodationActivity extends AppCompatActivity {
     int [] a = {R.drawable.na,R.drawable.nb,R.drawable.qa,R.drawable.qb,R.drawable.p1,R.drawable.p2,R.drawable.pa,R.drawable.r};
 
 
-
+     SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +54,7 @@ public class DetailAccomodationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_accomodation);
         imageView = (ImageView)findViewById(R.id.img);
         spref=getSharedPreferences(filename,0);
-        final SharedPreferences.Editor editor = spref.edit();
+         editor = spref.edit();
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
@@ -134,7 +134,11 @@ public class DetailAccomodationActivity extends AppCompatActivity {
 
                             mDialog.dismiss();
                          Toast.makeText(DetailAccomodationActivity.this,"Accomodation is assigned to you",Toast.LENGTH_SHORT).show();
-                         Intent intent = new Intent(DetailAccomodationActivity.this,RegistrationOption.class);
+
+                           // editor.commit();
+
+
+                         Intent intent = new Intent(DetailAccomodationActivity.this,Login.class);
                          startActivity(intent);
                     }
                     else {

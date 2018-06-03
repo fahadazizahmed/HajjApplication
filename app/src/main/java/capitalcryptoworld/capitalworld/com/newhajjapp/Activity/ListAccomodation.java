@@ -37,14 +37,14 @@ import retrofit2.Response;
 public class ListAccomodation extends AppCompatActivity implements AccomodationDetailAdapter.FlowerClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView mRecyclerView;
-    SharedPreferences spref;
-    static String filename="my personal file";
     AlertDialog dialogBuilder;
     private RestManager mManager;
     private AccomodationDetailAdapter mAccomodationDetailAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-    int [] a = {R.drawable.na,R.drawable.nb,R.drawable.qa,R.drawable.qb,R.drawable.p1,R.drawable.p2,R.drawable.pa,R.drawable.r};
-
+    int [] a = {R.drawable.na,R.drawable.nb,R.drawable.qa,R.drawable.qb,R.drawable.p1,R.drawable.p2,R.drawable.pa,R.drawable.r,R.drawable.pa};
+    SharedPreferences spref;
+    static String filename="my personal file";
+    public static final String Value = "could not load data";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,18 +66,19 @@ public class ListAccomodation extends AppCompatActivity implements AccomodationD
     public class GetAccomodation extends AsyncTask<String,Integer,String>
     {
         private ProgressDialog mDialog;
+        int AccommodationId;
 
 
         protected  void onPreExecute()
         {
+            spref=getSharedPreferences(filename, Context.MODE_PRIVATE);//this file only aceess your app
+
+            AccommodationId = spref.getInt("accomodation",9);
 
             mDialog = ProgressDialog.show(ListAccomodation.this,"Please wait...", "Get All Accomodation ...", true);
         }
         @Override
         protected String doInBackground(String... strings) {
-            //Addition for Accommodation Id
-            spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-            String AccommodationId = spref.getString("AccommodationId","");
 
             Call<AccomodationList> call = mManager.getServices().getAllaccomodation(AccommodationId);
             call.enqueue(new Callback<AccomodationList>() {

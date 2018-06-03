@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class AvailableOperator extends AppCompatActivity implements OperatorAdap
     RestManager restManager;
     TextView descrription;
     int b;
+    ProgressBar progressBar;
 
 
     private RecyclerView mRecyclerView;
@@ -61,6 +63,7 @@ public class AvailableOperator extends AppCompatActivity implements OperatorAdap
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_available_operator);
+        progressBar = (ProgressBar)findViewById(R.id.pBar);
         restManager = new RestManager();
         myProviderList = new ArrayList<>();
         button = (Button)findViewById(R.id.btn_signs);
@@ -90,6 +93,7 @@ public class AvailableOperator extends AppCompatActivity implements OperatorAdap
                     mAccomodationDetailAdapter.addFlower( myProvider1);
                     //paths[i] = myProvider1.getName();
                 }
+                progressBar.setVisibility(View.GONE);
 
             }
 

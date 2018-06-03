@@ -44,8 +44,6 @@ public class Login extends AppCompatActivity {
     String token;
     String concateStringWithToken;
     String  authHeader;
-    Boolean HajjRegistration;
-    String accId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,143 +160,57 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<AuthToken> call, Response<AuthToken> response) {
                     if (response.isSuccessful()) {
-                         token = response.body().getResult().getAccessToken();
-                         //HajjRegistration
-                        HajjRegistration = response.body().getResult().getHajjRegistration();
-                        accId=response.body().getResult().getAccommodationId();
+                        token = response.body().getResult().getAccessToken();
                         Log.d("MyToken",token);
                         id=  response.body().getResult().getUserId();
                         Log.d("MyId",id+"");
                         editor.putInt("Shared Data", 32);
+
+
+                        int complain = response.body().getResult().getComplaintId();
+                        Log.d("complain",complain+"");
+
+                        int accomodation = response.body().getResult().getAccId();
+                        Log.d("accomodation",accomodation+"");
+
+                        int opeId = response.body().getResult().getOperatorId();
+                        Log.d("opeId",opeId+"");
+
+                        String role = response.body().getResult().getUsersRole();
+                        Log.d("role",role+"");
+
+                         boolean register= response.body().getResult().isHajjRegistration();
+                        Log.d("register",register+"");
+
+
+
                         editor.putString("Token",token);
                         editor.putInt("Id",id);
-
-                        //Addition
-                        editor.putBoolean("HajjRegistration",HajjRegistration);
-                        editor.putString("AccommodationId",accId);
+                        editor.putInt("complain",complain);
+                        editor.putInt("accomodation",accomodation);
+                        editor.putInt("opeId",opeId);
+                        editor.putString("role",role);
+                        editor.putBoolean("register",register);
                         editor.commit();
-                        concateStringWithToken = "Bearer";
-                        authHeader = concateStringWithToken+" "+token;
-                        //Login succefull
-                        // now check Accomodation is selected or not
-                        Call<CheckAccmodation> checkAccmodationCall = restManager.getServices().checkAccomodation(authHeader);
-                        checkAccmodationCall.enqueue(new Callback<CheckAccmodation>() {
-                            @Override
-                            public void onResponse(Call<CheckAccmodation> call, Response<CheckAccmodation> response) {
-                                if(response.isSuccessful()){
+                        mDialog.dismiss();
+                        if(role.equals("User")){
 
 
-                                    String  accom_id =   response.body().getResult();
-                                   Log.d("AccomodationId",accom_id+"");
-                                    editor.putString("Accomodation_Id",accom_id);
-                                    editor.commit();
-                                    // now we check user type
+                            Intent intent = new Intent(Login.this,RegistrationOption.class);
+                            startActivity(intent);
+
+                        }
+                        else {
+                            Intent intent = new Intent(Login.this,AdminDashboard.class);
+                            startActivity(intent);
+
+                        }
 
 
-
-                                    Call<GetUserType> call1 = restManager.getServices().getUserById(id,authHeader);
-                                    call1.enqueue(new Callback<GetUserType>() {
-                                        @Override
-                                        public void onResponse(Call<GetUserType> call, Response<GetUserType> response) {
-                                            if(response.isSuccessful()) {
-                                               String role = response.body().getResult();
-                                                Log.d("role",role);
-                                                Log.d("Sucess",response.body().isSuccess()+"");
-                                                editor.putString("role",role);
-                                                editor.commit();
-                                                mDialog.dismiss();
-
-                                                if(role.equals("User")){
-                                                   // mDialog.dismiss();
-
-                                                    Intent intent = new Intent(Login.this,RegistrationOption.class);
-                                                    startActivity(intent);
-
-                                               }
-                                                else {
-                                                  Intent intent = new Intent(Login.this,AdminDashboard.class);
-                                                    startActivity(intent);
-
-                                                }
-                                            }
-                                            else{
-                                                dialogBuilder = new AlertDialog.Builder(Login.this).create();
-                                                View customView = getLayoutInflater().inflate(R.layout.activity_password_change_dialogue, null);
-                                                TextView msgError  = (TextView) customView.findViewById(R.id.tx_msg1);
-                                                TextView msgError1  = (TextView) customView.findViewById(R.id.tx_msg2);
-                                                TextView errorDialog = (TextView)customView.findViewById(R.id.error_msg);
-                                                msgError.setText("Oops! we cannot get user type");
-                                                dialogBuilder.setView(customView);
-                                                dialogBuilder.show();
-                                                mDialog.dismiss();
-
-                                            }
+                    }
 
 
-
-                                        }
-
-                                        @Override
-                                        public void onFailure(Call<GetUserType> call, Throwable t) {
-                                            dialogBuilder = new AlertDialog.Builder(Login.this).create();
-                                            View customView = getLayoutInflater().inflate(R.layout.activity_password_change_dialogue, null);
-                                            TextView msgError  = (TextView) customView.findViewById(R.id.tx_msg1);
-                                            TextView msgError1  = (TextView) customView.findViewById(R.id.tx_msg2);
-                                            TextView errorDialog = (TextView)customView.findViewById(R.id.error_msg);
-                                            msgError.setText("Oops!there ia no internet connection");
-                                            dialogBuilder.setView(customView);
-                                            dialogBuilder.show();
-                                            mDialog.dismiss();
-
-                                        }
-                                    });
-
-
-
-
-
-
-
-
-
-
-
-                                    ////////////
-
-                                }
-                                else{
-                                    dialogBuilder = new AlertDialog.Builder(Login.this).create();
-                                    View customView = getLayoutInflater().inflate(R.layout.activity_password_change_dialogue, null);
-                                    TextView msgError  = (TextView) customView.findViewById(R.id.tx_msg1);
-                                    TextView msgError1  = (TextView) customView.findViewById(R.id.tx_msg2);
-                                    TextView errorDialog = (TextView)customView.findViewById(R.id.error_msg);
-                                    msgError.setText("Oops! we cannot get the accomodation detail");
-                                    dialogBuilder.setView(customView);
-                                    dialogBuilder.show();
-                                    mDialog.dismiss();
-
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<CheckAccmodation> call, Throwable t) {
-                                dialogBuilder = new AlertDialog.Builder(Login.this).create();
-                                View customView = getLayoutInflater().inflate(R.layout.activity_password_change_dialogue, null);
-                                TextView msgError  = (TextView) customView.findViewById(R.id.tx_msg1);
-                                TextView msgError1  = (TextView) customView.findViewById(R.id.tx_msg2);
-                                TextView errorDialog = (TextView)customView.findViewById(R.id.error_msg);
-                                msgError.setText("Oops!there ia no internet connection");
-                                dialogBuilder.setView(customView);
-                                dialogBuilder.show();
-                                mDialog.dismiss();
-
-                            }
-                        });
-                        //End accomodation selected or not
-
-
-
-                    } else {
+                    else {
                         dialogBuilder = new AlertDialog.Builder(Login.this).create();
                         View customView = getLayoutInflater().inflate(R.layout.activity_password_change_dialogue, null);
                         TextView msgError  = (TextView) customView.findViewById(R.id.tx_msg1);

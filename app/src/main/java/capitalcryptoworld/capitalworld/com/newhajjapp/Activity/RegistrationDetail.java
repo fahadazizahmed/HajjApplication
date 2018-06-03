@@ -298,12 +298,13 @@ public class RegistrationDetail extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<HajjRegisterResponse> call, Response<HajjRegisterResponse> response) {
                     if(response.isSuccessful()){
-                       // HajjRegisterResponse hajjRegisterResponse = response.body();
-                       // Log.d("sucess respnse",hajjRegisterResponse.isSuccess()+"");
+                        HajjRegisterResponse hajjRegisterResponse = response.body();
+                        Log.d("sucess respnse",hajjRegisterResponse.isSuccess()+"");
                        Toast.makeText(RegistrationDetail.this,"You register successfully for hajj draw",Toast.LENGTH_SHORT).show();
                         mDialog.dismiss();
-                        editor.putInt("key",5);
+                        editor.putBoolean("register",true);
                         editor.commit();
+
 
                        Intent intent = new Intent(RegistrationDetail.this,RegistrationOption.class);
                        startActivity(intent);

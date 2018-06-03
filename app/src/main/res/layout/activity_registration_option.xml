@@ -92,7 +92,7 @@
             android:id="@+id/acc_text"
             android:layout_gravity="center"
 
-            android:text="Select  Accomodation  package"/>
+            android:text="Select Accomodation  package"/>
 
     </LinearLayout>
 
@@ -112,6 +112,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="#ffffff"
+            android:id="@+id/tx_com"
 
             android:layout_gravity="center"
             android:text="Register Complaint"/>

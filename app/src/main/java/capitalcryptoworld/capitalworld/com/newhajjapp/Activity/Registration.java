@@ -149,6 +149,29 @@ public class Registration extends AppCompatActivity {
                         mDialog.dismiss();
                         Intent intent = new Intent(Registration.this,Login.class);
                         startActivity(intent);
+                        name.setText("");
+                        surName.setText("");
+                        email.setText("");
+                        phnNumber.setText("");
+                        password.setText("");
+                        userNames.setText("");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                        // Intent intent = new Intent(Registration.this,Log.class);
                        // startActivity(intent);
 

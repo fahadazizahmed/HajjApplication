@@ -36,28 +36,69 @@ public class AuthToken {
 
         int userId;
 
-        //Hajj Registratin
-        public Boolean getHajjRegistration(){
-            return hajjRegistration;
+
+
+
+          String usersRole;
+
+        public String getUsersRole() {
+            return usersRole;
         }
 
-        public void setHajjRegistration(Boolean hajjRegistration) {
-            this.hajjRegistration = hajjRegistration;
+        public void setUsersRole(String usersRole) {
+            this.usersRole = usersRole;
         }
 
-        Boolean hajjRegistration;
-
-
-        //Get Accommodation Id
-        public String getAccommodationId(){
+        public int getAccId() {
             return accId;
         }
 
-        public void setHajjRegistration(String accId) {
+        public void setAccId(int accId) {
             this.accId = accId;
         }
 
-        String accId;
+        public int getComplaintId() {
+            return complaintId;
+        }
+
+        public void setComplaintId(int complaintId) {
+            this.complaintId = complaintId;
+        }
+
+        public int getOperatorId() {
+            return operatorId;
+        }
+
+        public void setOperatorId(int operatorId) {
+            this.operatorId = operatorId;
+        }
+
+        public boolean isHajjRegistration() {
+            return hajjRegistration;
+        }
+
+        public void setHajjRegistration(boolean hajjRegistration) {
+            this.hajjRegistration = hajjRegistration;
+        }
+
+        int accId;
+                  int complaintId;
+                  int operatorId;
+                  boolean hajjRegistration;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

@@ -28,7 +28,7 @@ public class AccomodationDetailAdapter extends RecyclerView.Adapter<Accomodation
     //public static final String TAG=FlowerAdapter.class.getSimpleName();
     int[] a;
 
-    public AccomodationDetailAdapter(FlowerClickListener listener, int[] a)
+    public AccomodationDetailAdapter(FlowerClickListener listener , int[] a)
     {
         ListAccomodation = new ArrayList<>();
         this.a = a;

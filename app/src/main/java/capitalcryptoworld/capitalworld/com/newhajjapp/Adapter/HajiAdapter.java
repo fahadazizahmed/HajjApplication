@@ -39,7 +39,7 @@ public class HajiAdapter extends RecyclerView.Adapter<HajiAdapter.Holder> {
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.haji_row,null,false);
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.haji_row,parent,false);
         return new Holder(row);
 
 
@@ -48,9 +48,9 @@ public class HajiAdapter extends RecyclerView.Adapter<HajiAdapter.Holder> {
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         HajiResult userAccomdationList = ListAccomodation.get(position);
-        holder.mName.setText(userAccomdationList.getProvince());
-        holder.mLocation.setText(userAccomdationList.getProvince());
-        holder.mAvailable.setText(userAccomdationList.getProvince());
+        holder.mName.setText(userAccomdationList.getPhone());
+        holder.mLocation.setText(userAccomdationList.getGender());
+        holder.mAvailable.setText(userAccomdationList.getAddress());
 
         byte[] decodedString = Base64.decode(userAccomdationList.getCnicPic(), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);

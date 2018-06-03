@@ -48,14 +48,7 @@ public class AdminDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        linearLayout2 = (LinearLayout)findViewById(R.id.a_op);
-        linearLayout2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminDashboard.this,AvailableOperator.class);
-                startActivity(intent);
-            }
-        });
+
         linearLayout3 = (LinearLayout)findViewById(R.id.s_user);
         linearLayout3.setOnClickListener(new View.OnClickListener() {
             @Override

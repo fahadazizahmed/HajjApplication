@@ -150,8 +150,10 @@ public class ComplaintForm extends AppCompatActivity {
 
                         Toast.makeText(ComplaintForm.this,"Your compalain is sent we accomodate you soon!Thanks",Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(ComplaintForm.this,RegistrationOption.class);
+                        Intent intent = new Intent(ComplaintForm.this,Login.class);
                         startActivity(intent);
+                        title.setText("");
+                        description.setText("");
                     }
 
                     else

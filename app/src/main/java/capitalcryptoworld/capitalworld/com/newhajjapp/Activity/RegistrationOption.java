@@ -27,6 +27,7 @@ LinearLayout accomodationPackage;
     LinearLayout complainCervice;
     AlertDialog dialogBuilder;
     LinearLayout linearLayout5;
+    TextView textView1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,36 @@ LinearLayout accomodationPackage;
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_registration_option);
         textView = (TextView)findViewById(R.id.acc_text);
+        textView1 = (TextView)findViewById(R.id.tx_com);
+
+        spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
+        int acc = spref.getInt("accomodation",21);
+        int comp =  spref.getInt("complain",34);
+
+        if(acc == 0){
+            textView.setText("Select Accomodation  package");
+        }
+        else {
+            textView.setText("See the detail of your package");
+        }
+        if(comp == 0){
+            textView1.setText("Register your Complain");
+        }
+        else {
+            textView1.setText("Check your register complain");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         complainCervice = (LinearLayout)findViewById(R.id.btn_complain);
         registerHajj = (LinearLayout)findViewById(R.id.reg_hajj);
         linearLayout5 = (LinearLayout)findViewById(R.id.logout) ;
@@ -51,9 +82,7 @@ LinearLayout accomodationPackage;
         });
 
 
-        spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-       String accid= spref.getString("Accomodation_Id","43");
-        Toast.makeText(RegistrationOption.this,accid+"",Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -64,13 +93,10 @@ LinearLayout accomodationPackage;
             @Override
             public void onClick(View view)
             {
-                //Addition for Hajj Registration Check
-
                 spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-                Boolean HajjRegistrationCheck = spref.getBoolean("HajjRegistration",false);
-                //int key = spref.getInt("key",10);
+                boolean register = spref.getBoolean("register",false);
 
-                if(HajjRegistrationCheck==true)
+                if(register == true)
                 {
 
                     dialogBuilder = new AlertDialog.Builder(RegistrationOption.this).create();
@@ -105,13 +131,13 @@ LinearLayout accomodationPackage;
                    public void onClick(View v)
                    {
                        spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-                       //int key = spref.getInt("key",10);
-                       Boolean HajjRegistrationCheck = spref.getBoolean("HajjRegistration",false);
-                       if(HajjRegistrationCheck == true) {
-                           Intent intent = new Intent(RegistrationOption.this, ListAccomodation.class);
-                           startActivity(intent);
-                       }
-                       else {
+                       boolean register = spref.getBoolean("register",false);
+                       int acc = spref.getInt("accomodation",21);
+                       //if(register == true) {
+                       //    Intent intent = new Intent(RegistrationOption.this, ListAccomodation.class);
+                       //    startActivity(intent);
+                      // }
+                     if (register == false){
                            dialogBuilder = new AlertDialog.Builder(RegistrationOption.this).create();
                            View customView = getLayoutInflater().inflate(R.layout.activity_password_change_dialogue, null);
                            TextView msgError  = (TextView) customView.findViewById(R.id.tx_msg1);
@@ -120,6 +146,32 @@ LinearLayout accomodationPackage;
                            msgError.setText("Please Register for Hajj before");
                            dialogBuilder.setView(customView);
                            dialogBuilder.show();
+
+                       }
+                      else if(register == true && acc == 0){
+                         Intent intent = new Intent(RegistrationOption.this, ListAccomodation.class);
+                         startActivity(intent);
+                       }
+
+
+                       else {
+
+
+                         Intent intent = new Intent(RegistrationOption.this, YourAccomodation.class);
+                         startActivity(intent);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                        }
@@ -139,13 +191,11 @@ LinearLayout accomodationPackage;
             @Override
             public void onClick(View v) {
                 spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-                Boolean HajjRegistrationCheck = spref.getBoolean("HajjRegistration",false);
-                //int key = spref.getInt("key",10);
-                if(HajjRegistrationCheck==true) {
-                    Intent intent = new Intent(RegistrationOption.this, ComplaintForm.class);
-                    startActivity(intent);
-                }
-                else {
+                boolean register = spref.getBoolean("register",false);
+               int comp =  spref.getInt("complain",34);
+                if(register == false) {
+
+
                     dialogBuilder = new AlertDialog.Builder(RegistrationOption.this).create();
                     View customView = getLayoutInflater().inflate(R.layout.activity_password_change_dialogue, null);
                     TextView msgError  = (TextView) customView.findViewById(R.id.tx_msg1);
@@ -154,9 +204,30 @@ LinearLayout accomodationPackage;
                     msgError.setText("Please Register for Hajj before");
                     dialogBuilder.setView(customView);
                     dialogBuilder.show();
+                }
 
+
+                else if(register == true && comp == 0){
+                    Intent intent = new Intent(RegistrationOption.this, ComplaintForm.class);
+                    startActivity(intent);
+                }
+
+
+                else {
+
+
+                    Intent intent = new Intent(RegistrationOption.this, RegisterComplain.class);
+                    startActivity(intent);
 
                 }
+
+
+
+
+
+
+
+
             }
         });
 
@@ -198,7 +269,7 @@ LinearLayout accomodationPackage;
 
 
 
-       Log.d("Ac+id",accid+"");
+
 
 
 
