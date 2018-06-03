@@ -35,6 +35,29 @@ public class AuthToken {
         }
 
         int userId;
+
+        //Hajj Registratin
+        public Boolean getHajjRegistration(){
+            return hajjRegistration;
+        }
+
+        public void setHajjRegistration(Boolean hajjRegistration) {
+            this.hajjRegistration = hajjRegistration;
+        }
+
+        Boolean hajjRegistration;
+
+
+        //Get Accommodation Id
+        public String getAccommodationId(){
+            return accId;
+        }
+
+        public void setHajjRegistration(String accId) {
+            this.accId = accId;
+        }
+
+        String accId;
     }
 
 

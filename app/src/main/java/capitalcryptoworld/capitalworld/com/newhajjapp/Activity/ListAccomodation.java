@@ -2,7 +2,9 @@ package capitalcryptoworld.capitalworld.com.newhajjapp.Activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -35,6 +37,8 @@ import retrofit2.Response;
 public class ListAccomodation extends AppCompatActivity implements AccomodationDetailAdapter.FlowerClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView mRecyclerView;
+    SharedPreferences spref;
+    static String filename="my personal file";
     AlertDialog dialogBuilder;
     private RestManager mManager;
     private AccomodationDetailAdapter mAccomodationDetailAdapter;
@@ -71,7 +75,11 @@ public class ListAccomodation extends AppCompatActivity implements AccomodationD
         }
         @Override
         protected String doInBackground(String... strings) {
-            Call<AccomodationList> call = mManager.getServices().getAllaccomodation();
+            //Addition for Accommodation Id
+            spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
+            String AccommodationId = spref.getString("AccommodationId","");
+
+            Call<AccomodationList> call = mManager.getServices().getAllaccomodation(AccommodationId);
             call.enqueue(new Callback<AccomodationList>() {
                 @Override
                 public void onResponse(Call<AccomodationList> call, Response<AccomodationList> response) {

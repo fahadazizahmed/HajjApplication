@@ -44,6 +44,8 @@ public class Login extends AppCompatActivity {
     String token;
     String concateStringWithToken;
     String  authHeader;
+    Boolean HajjRegistration;
+    String accId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,12 +163,19 @@ public class Login extends AppCompatActivity {
                 public void onResponse(Call<AuthToken> call, Response<AuthToken> response) {
                     if (response.isSuccessful()) {
                          token = response.body().getResult().getAccessToken();
+                         //HajjRegistration
+                        HajjRegistration = response.body().getResult().getHajjRegistration();
+                        accId=response.body().getResult().getAccommodationId();
                         Log.d("MyToken",token);
                         id=  response.body().getResult().getUserId();
                         Log.d("MyId",id+"");
                         editor.putInt("Shared Data", 32);
                         editor.putString("Token",token);
                         editor.putInt("Id",id);
+
+                        //Addition
+                        editor.putBoolean("HajjRegistration",HajjRegistration);
+                        editor.putString("AccommodationId",accId);
                         editor.commit();
                         concateStringWithToken = "Bearer";
                         authHeader = concateStringWithToken+" "+token;

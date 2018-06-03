@@ -42,8 +42,11 @@ Call<RegisterResponse> sendUser(@Body Register register);
 @POST("services/app/ComplaintService/Create")
     Call<ComplainResponse>  sendComplain(@Header("Authorization") String authorization, @Body Complaint complaint);
 
+//@POST("services/app/AccommodationService/ListAll")
+//Call<AccomodationList> getAllaccomodation();
 @POST("services/app/AccommodationService/ListAll")
-Call<AccomodationList> getAllaccomodation();
+Call<AccomodationList> getAllaccomodation(@Query("AccommodationId") String AccommodationId);
+
 @GET("services/app/HajjRegistrationService/GetAccCheck")
 Call<CheckAccmodation> checkAccomodation(@Header("Authorization") String authorization);
 @GET("services/app/HajjRegistrationService/GetRoleCheck")

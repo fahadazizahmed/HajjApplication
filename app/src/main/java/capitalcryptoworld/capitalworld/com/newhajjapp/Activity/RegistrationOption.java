@@ -64,10 +64,13 @@ LinearLayout accomodationPackage;
             @Override
             public void onClick(View view)
             {
-                spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-                int key = spref.getInt("key",10);
+                //Addition for Hajj Registration Check
 
-                if(key == 5)
+                spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
+                Boolean HajjRegistrationCheck = spref.getBoolean("HajjRegistration",false);
+                //int key = spref.getInt("key",10);
+
+                if(HajjRegistrationCheck==true)
                 {
 
                     dialogBuilder = new AlertDialog.Builder(RegistrationOption.this).create();
@@ -102,8 +105,9 @@ LinearLayout accomodationPackage;
                    public void onClick(View v)
                    {
                        spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-                       int key = spref.getInt("key",10);
-                       if(key == 5) {
+                       //int key = spref.getInt("key",10);
+                       Boolean HajjRegistrationCheck = spref.getBoolean("HajjRegistration",false);
+                       if(HajjRegistrationCheck == true) {
                            Intent intent = new Intent(RegistrationOption.this, ListAccomodation.class);
                            startActivity(intent);
                        }
@@ -135,8 +139,9 @@ LinearLayout accomodationPackage;
             @Override
             public void onClick(View v) {
                 spref=getSharedPreferences(filename, Context.MODE_PRIVATE);
-                int key = spref.getInt("key",10);
-                if(key == 5) {
+                Boolean HajjRegistrationCheck = spref.getBoolean("HajjRegistration",false);
+                //int key = spref.getInt("key",10);
+                if(HajjRegistrationCheck==true) {
                     Intent intent = new Intent(RegistrationOption.this, ComplaintForm.class);
                     startActivity(intent);
                 }
