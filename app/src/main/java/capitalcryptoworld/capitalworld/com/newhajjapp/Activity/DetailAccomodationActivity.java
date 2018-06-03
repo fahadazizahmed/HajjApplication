@@ -77,7 +77,9 @@ public class DetailAccomodationActivity extends AppCompatActivity {
         location.setText(allAccomodation.getLocation());
 
 
+
         imageView.setImageResource(a[v]);
+        Toast.makeText(DetailAccomodationActivity.this,ids+"",Toast.LENGTH_SHORT).show();
         editor.putInt("AccomodationId",ids);
         editor.commit();
 
@@ -122,7 +124,7 @@ public class DetailAccomodationActivity extends AppCompatActivity {
                 authHeader = concateStringWithToken+" "+token;
 
 
-                mDialog = ProgressDialog.show(DetailAccomodationActivity.this,"Please wait...", "Login process ...", true);
+                mDialog = ProgressDialog.show(DetailAccomodationActivity.this,"Please wait...", "Accomodation Assign is in process ...", true);
             }
             @Override
             protected String doInBackground(String... strings) {
@@ -133,12 +135,15 @@ public class DetailAccomodationActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
 
                             mDialog.dismiss();
-                         Toast.makeText(DetailAccomodationActivity.this,"Accomodation is assigned to you",Toast.LENGTH_SHORT).show();
+                            editor.putInt("accomodation",type);
+                            editor.commit();
+
 
                            // editor.commit();
+                            // Toast.makeText(DetailAccomodationActivity.this,"Accomodation is assigned to you",Toast.LENGTH_SHORT).show();
 
 
-                         Intent intent = new Intent(DetailAccomodationActivity.this,Login.class);
+                         Intent intent = new Intent(DetailAccomodationActivity.this,RegistrationOption.class);
                          startActivity(intent);
                     }
                     else {

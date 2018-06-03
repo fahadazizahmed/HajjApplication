@@ -165,6 +165,8 @@ public class Login extends AppCompatActivity {
                         id=  response.body().getResult().getUserId();
                         Log.d("MyId",id+"");
                         editor.putInt("Shared Data", 32);
+                        editor.putString("username",myName);
+                        editor.putString("userpass",myPasword);
 
 
                         int complain = response.body().getResult().getComplaintId();
